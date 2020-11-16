@@ -6,7 +6,13 @@ public class ObalenyStvorec {
     private String farba;
     private Stvorec stvorec;
     private int rotacia;
-    public ObalenyStvorec(int poziciaX, int poziciaY, String farba) {
+    private Piece referenciaNaPiece;
+    private int poziciaXNaPlatne;
+    private int poziciaYNaPlatne;
+    public ObalenyStvorec(Piece piece, int poziciaX, int poziciaY, String farba) {
+        this.referenciaNaPiece = piece;
+        this.poziciaXNaPlatne = poziciaX * 20;
+        this.poziciaYNaPlatne = poziciaY * 20;
         Random random = new Random();
         this.poziciaX = poziciaX;
         this.poziciaY = poziciaY;
@@ -23,6 +29,22 @@ public class ObalenyStvorec {
     
     public Stvorec getStvorec() {
         return this.stvorec;
+    }
+    
+    public void pripocitajKPoziciiNaPlatneX(int posun) {
+        this.poziciaXNaPlatne += posun;
+    }
+    
+    public void setPoziciaNaPlatneX(int poziciaX) {
+        this.poziciaXNaPlatne = poziciaX;
+    }
+    public void setPoziciaNaPlatneY(int poziciaY) {
+        this.poziciaYNaPlatne = poziciaY;
+    }
+    
+    public boolean spadol() {
+        
+        return false;
     }
     
     public void otocSa() { 

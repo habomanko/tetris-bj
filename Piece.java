@@ -31,7 +31,7 @@ public class Piece {
         this.farby.add("blue");
         this.farby.add("green");
         this.farby.add("yellow");
-        this.farby.add("L");
+        this.farby.add("magenta");
         
         this.tvar = tvar;
         this.smerX = random.nextInt(2)-1;
@@ -48,45 +48,45 @@ public class Piece {
         
         switch (this.tvar){
             case "I":
-                this.zobrazenie.add(new ObalenyStvorec(0,0,this.farba));
-                this.zobrazenie.add(new ObalenyStvorec(0,1,this.farba));
-                this.zobrazenie.add(new ObalenyStvorec(0,2,this.farba));
+                this.zobrazenie.add(new ObalenyStvorec(this, 0,0,this.farba));
+                this.zobrazenie.add(new ObalenyStvorec(this, 0,1,this.farba));
+                this.zobrazenie.add(new ObalenyStvorec(this, 0,2,this.farba));
                 break;
             case "L":
-                this.zobrazenie.add(new ObalenyStvorec(0,0,this.farba));
-                this.zobrazenie.add(new ObalenyStvorec(0,1,this.farba));
-                this.zobrazenie.add(new ObalenyStvorec(0,2,this.farba));
-                this.zobrazenie.add(new ObalenyStvorec(1,2,this.farba));
+                this.zobrazenie.add(new ObalenyStvorec(this, 0,0,this.farba));
+                this.zobrazenie.add(new ObalenyStvorec(this, 0,1,this.farba));
+                this.zobrazenie.add(new ObalenyStvorec(this, 0,2,this.farba));
+                this.zobrazenie.add(new ObalenyStvorec(this, 1,2,this.farba));
                 break;
             case "J":
-                this.zobrazenie.add(new ObalenyStvorec(0,0,this.farba));
-                this.zobrazenie.add(new ObalenyStvorec(0,1,this.farba));
-                this.zobrazenie.add(new ObalenyStvorec(0,2,this.farba));
-                this.zobrazenie.add(new ObalenyStvorec(-1,2,this.farba));
+                this.zobrazenie.add(new ObalenyStvorec(this, 0,0,this.farba));
+                this.zobrazenie.add(new ObalenyStvorec(this, 0,1,this.farba));
+                this.zobrazenie.add(new ObalenyStvorec(this, 0,2,this.farba));
+                this.zobrazenie.add(new ObalenyStvorec(this, -1,2,this.farba));
                 break;
             case "O":
-                this.zobrazenie.add(new ObalenyStvorec(0,0,this.farba));
-                this.zobrazenie.add(new ObalenyStvorec(0,1,this.farba));
-                this.zobrazenie.add(new ObalenyStvorec(1,0,this.farba));
-                this.zobrazenie.add(new ObalenyStvorec(1,1,this.farba));
+                this.zobrazenie.add(new ObalenyStvorec(this, 0,0,this.farba));
+                this.zobrazenie.add(new ObalenyStvorec(this, 0,1,this.farba));
+                this.zobrazenie.add(new ObalenyStvorec(this, 1,0,this.farba));
+                this.zobrazenie.add(new ObalenyStvorec(this, 1,1,this.farba));
                 break;
             case "S":
-                this.zobrazenie.add(new ObalenyStvorec(0,1,this.farba));
-                this.zobrazenie.add(new ObalenyStvorec(1,1,this.farba));
-                this.zobrazenie.add(new ObalenyStvorec(1,0,this.farba));
-                this.zobrazenie.add(new ObalenyStvorec(2,0,this.farba));
+                this.zobrazenie.add(new ObalenyStvorec(this, 0,1,this.farba));
+                this.zobrazenie.add(new ObalenyStvorec(this, 1,1,this.farba));
+                this.zobrazenie.add(new ObalenyStvorec(this, 1,0,this.farba));
+                this.zobrazenie.add(new ObalenyStvorec(this, 2,0,this.farba));
                 break;
             case "Z":
-                this.zobrazenie.add(new ObalenyStvorec(0,0,this.farba));
-                this.zobrazenie.add(new ObalenyStvorec(1,0,this.farba));
-                this.zobrazenie.add(new ObalenyStvorec(1,1,this.farba));
-                this.zobrazenie.add(new ObalenyStvorec(2,1,this.farba));
+                this.zobrazenie.add(new ObalenyStvorec(this, 0,0,this.farba));
+                this.zobrazenie.add(new ObalenyStvorec(this, 1,0,this.farba));
+                this.zobrazenie.add(new ObalenyStvorec(this, 1,1,this.farba));
+                this.zobrazenie.add(new ObalenyStvorec(this, 2,1,this.farba));
                 break;
             case "T":
-                this.zobrazenie.add(new ObalenyStvorec(0,0,this.farba));
-                this.zobrazenie.add(new ObalenyStvorec(1,0,this.farba));
-                this.zobrazenie.add(new ObalenyStvorec(2,0,this.farba));
-                this.zobrazenie.add(new ObalenyStvorec(1,1,this.farba));
+                this.zobrazenie.add(new ObalenyStvorec(this, 0,0,this.farba));
+                this.zobrazenie.add(new ObalenyStvorec(this, 1,0,this.farba));
+                this.zobrazenie.add(new ObalenyStvorec(this, 2,0,this.farba));
+                this.zobrazenie.add(new ObalenyStvorec(this, 1,1,this.farba));
                 break;
             default:
                 break;
@@ -98,6 +98,7 @@ public class Piece {
                 stvorec.otocSa();
             }
             stvorec.getStvorec().posunVodorovne(posunX*20);
+            stvorec.pripocitajKPoziciiNaPlatneX(posunX * 20);
             stvorec.getStvorec().zobraz();
         }
     }
