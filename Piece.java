@@ -7,11 +7,13 @@ public class Piece {
     private int poziciaX;
     private int poziciaY;
     private String farba;
+    private boolean spadol;
     private ArrayList<ObalenyStvorec> zobrazenie;
     private ArrayList<String> tvary;
     private ArrayList<String> farby;
+    private Manazer manazer;
     public Piece(String tvar, String farba) {
-        
+        Manazer manazer = new Manazer();
         Random random = new Random();
         this.zobrazenie = new ArrayList<ObalenyStvorec>();
         
@@ -34,7 +36,7 @@ public class Piece {
         this.tvar = tvar;
         this.smerX = random.nextInt(2)-1;
         this.smerY = random.nextInt(2)-1;
-        
+        this.spadol = false;
         this.poziciaX = 0;
         this.poziciaY = 0; 
         if ( tvar == "R" ) {
@@ -90,24 +92,28 @@ public class Piece {
                 break;
         }
         int rotujKrat = random.nextInt(3);
+        int posunX = random.nextInt(9)+3;
         for (ObalenyStvorec stvorec : this.zobrazenie) {
             for (int i = 0; i < rotujKrat; i++) {
                 stvorec.otocSa();
             }
+            stvorec.getStvorec().posunVodorovne(posunX*20);
             stvorec.getStvorec().zobraz();
         }
     }
     
     
-    public void otocSa() {
-       for (ObalenyStvorec stvorec : this.zobrazenie) {
-           stvorec.getStvorec().skry();
-        }
-       for (ObalenyStvorec stvorec : this.zobrazenie) {
-           stvorec.otocSa();
-       }
-       for (ObalenyStvorec stvorec : this.zobrazenie) {
-           stvorec.getStvorec().zobraz();
+    public void aktivuj() {
+       if ( !this.spadol ) {
+           for (ObalenyStvorec stvorec : this.zobrazenie) {
+               stvorec.getStvorec().skry();
+            }
+           for (ObalenyStvorec stvorec : this.zobrazenie) {
+               stvorec.otocSa();
+           }
+           for (ObalenyStvorec stvorec : this.zobrazenie) {
+               stvorec.getStvorec().zobraz();
+           }
         }
     }
 }

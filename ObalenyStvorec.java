@@ -12,8 +12,8 @@ public class ObalenyStvorec {
         this.poziciaY = poziciaY;
         this.farba = farba;
         this.stvorec = new Stvorec();
-        //this.stvorec.posunZvisle(-50);
-        //this.stvorec.posunVodorovne(-60);
+        this.stvorec.posunZvisle(-50);
+        this.stvorec.posunVodorovne(-60);
         this.stvorec.zmenStranu(20);
         this.stvorec.zmenFarbu(farba);
         this.stvorec.posunZvisle(poziciaY * 20);
