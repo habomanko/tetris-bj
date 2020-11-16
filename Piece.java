@@ -89,9 +89,13 @@ public class Piece {
             default:
                 break;
         }
+        int rotujKrat = random.nextInt(3);
         for (ObalenyStvorec stvorec : this.zobrazenie) {
-                   stvorec.getStvorec().zobraz();
-                }
+            for (int i = 0; i < rotujKrat; i++) {
+                stvorec.otocSa();
+            }
+            stvorec.getStvorec().zobraz();
+        }
     }
     
     

@@ -1,4 +1,4 @@
-
+import java.util.Random;
 
 public class ObalenyStvorec {
     private int poziciaX;
@@ -7,10 +7,13 @@ public class ObalenyStvorec {
     private Stvorec stvorec;
     private int rotacia;
     public ObalenyStvorec(int poziciaX, int poziciaY, String farba) {
+        Random random = new Random();
         this.poziciaX = poziciaX;
         this.poziciaY = poziciaY;
         this.farba = farba;
         this.stvorec = new Stvorec();
+        //this.stvorec.posunZvisle(-50);
+        //this.stvorec.posunVodorovne(-60);
         this.stvorec.zmenStranu(20);
         this.stvorec.zmenFarbu(farba);
         this.stvorec.posunZvisle(poziciaY * 20);
